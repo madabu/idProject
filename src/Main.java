@@ -10,23 +10,19 @@ public class Main {
         return flag;
     }
 
-    public static String getGenderFromCnp(String genderIdentifier) {
-        String sex;
+    public static String getSexFromCnp(String genderIdentifier) {
+        String sex = null;
         char firstCharacter = genderIdentifier.charAt(0);
 
-        if (genderIdentifier == "1" ||
-                genderIdentifier == "3" ||
-                genderIdentifier == "5" ||
-                genderIdentifier == "7") {
+        if (firstCharacter == '1'||
+                firstCharacter == '3' ||
+                firstCharacter == '5' ||
+                firstCharacter == '7') {
             sex = "Male";
-        }
-        /* else if (genderIdentifier == "2" ||
-                    genderIdentifier == "4" ||
-                    genderIdentifier == "6" ||
-                    genderIdentifier == "8") {
-            sex = "Female";
-        }*/
-        else {
+        } else if (firstCharacter == '2' ||
+                firstCharacter == '4' ||
+                firstCharacter == '6' ||
+                firstCharacter == '8') {
             sex = "Female";
         }
         return sex;
@@ -59,7 +55,7 @@ public class Main {
         }
         return prefix;
 
-        }
+    }
 
     //birthdate = prefix (pp) + last two numbers of year (yy) + month (mm) + day (dd) => 0 1 2 3 4 5 6 7 (8)
     public static String getBirthDateFromCnpAsString (String CNP) {
@@ -101,7 +97,7 @@ public class Main {
         }
         return age;
     }
-    
+
     public static String countyOfBirth (int countyIdentifier) {
         String county = "";
         if (countyIdentifier == 01){
@@ -210,7 +206,7 @@ public class Main {
         System.out.println(CNP);
 
         isCnpLengthValid(CNP.length());
-        System.out.println("Sex = " + getGenderFromCnp(CNP));
+        System.out.println("Sex = " + getSexFromCnp(CNP));
         System.out.println(countyOfBirth(Integer.parseInt(CNP.substring(7,9))));
         System.out.println("Date of birth = " + getBirthDateFromCnpAsString(CNP));
         System.out.println("You are " + age(CNP) + " years old now.");
@@ -218,7 +214,6 @@ public class Main {
 
     }
 }
-
 
 
 
